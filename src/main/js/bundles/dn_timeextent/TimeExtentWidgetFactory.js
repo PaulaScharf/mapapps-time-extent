@@ -53,7 +53,7 @@ export default class TimeExtentWidgetFactory {
         });
 
         Binding.for(widget, model)
-            .syncAll("layers", "selectedLayerId","startDate", "endDate")
+            .syncAll("layers", "selectedLayerId","startDate", "endDate", "startTime", "endTime")
             .enable()
             .syncToLeftNow();
     }

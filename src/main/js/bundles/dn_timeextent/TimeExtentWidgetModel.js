@@ -22,14 +22,26 @@ export default declare({
 
     setFilter(){
         let selectedLayerId = this.selectedLayerId;
-        let startDate = this.startDate;
-        let endDate = this.endDate;
         let map = this._mapWidgetModel;
         let layer = map.map.findLayerById(selectedLayerId);
+        let that = this;
         map.view.whenLayerView(layer).then((layerView)=> {
-            var timeExtent = new TimeExtent();
-            timeExtent.start = new Date(startDate);
-            timeExtent.end = new Date(endDate);
+            let startDate = that.startDate;
+            let endDate = that.endDate;
+            let startTime = that.startTime;
+            let endTime = that.endTime;
+            let timeExtent = new TimeExtent();
+
+            if(startTime){
+                timeExtent.start = new Date(startDate);
+                timeExtent.start.setHours(Number(startTime.split(":")[0]));
+                timeExtent.start.setMinutes(Number(startTime.split(":")[1]));
+            }
+            if(endTime){
+                timeExtent.end = new Date(endDate);
+                timeExtent.end.setHours(Number(endTime.split(":")[0]));
+                timeExtent.end.setMinutes(Number(endTime.split(":")[1]));
+            }
             layerView.filter = new FeatureFilter({
                 timeExtent: timeExtent
             });

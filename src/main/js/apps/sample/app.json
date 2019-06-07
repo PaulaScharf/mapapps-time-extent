@@ -123,6 +123,18 @@
                             "title": "Hurricane",
                             "type": "AGS_FEATURE",
                             "url": "https://sampleserver5.arcgisonline.com/arcgis/rest/services/Hurricanes/MapServer/0"
+                        },
+                        {
+                            "id": "buchdrucker",
+                            "title": "Gefährdung Buchdrucker",
+                            "type": "AGS_FEATURE",
+                            "url": "https://www.fovgis.bayern.de/arcgis/rest/services/baywis_wsm/borki_gef/MapServer/1"
+                        },
+                        {
+                            "id": "kupferstecher",
+                            "title": "Gefährdung Kupferstecher",
+                            "type": "AGS_FEATURE",
+                            "url": "https://www.fovgis.bayern.de/arcgis/rest/services/baywis_wsm/borki_gef/MapServer/2"
                         }
                     ],
                     "basemap": "streets",

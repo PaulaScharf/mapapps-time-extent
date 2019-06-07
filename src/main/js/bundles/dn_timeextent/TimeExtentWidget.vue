@@ -1,5 +1,5 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
-    <div>
+    <v-container grid-list-md text-xs-center>
         <v-select
             :items="layers"
             v-model="selectedLayerId"
@@ -10,73 +10,126 @@
             hide-details
         />
 
-        <v-menu
-            lazy
-            :close-on-content-click="false"
-            v-model="menu"
-            transition="scale-transition"
-            offset-y
-            full-width
-            :nudge-right="40"
-            max-width="290px"
-            min-width="290px"
-        >
-            <v-text-field
-                slot="activator"
-                label="Starting Date"
-                v-model="startDate"
-                prepend-icon="event"
-                readonly
-            ></v-text-field>
-            <v-date-picker v-model="startDate" no-title scrollable actions>
-                <template scope="{ save, cancel }">
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn flat color="primary" @click="$emit('cancelStart', {})">Cancel</v-btn>
-                        <v-btn flat color="primary" @click="$emit('saveStart', {})">OK</v-btn>
-                    </v-card-actions>
-                </template>
-            </v-date-picker>
-        </v-menu>
+        <v-layout row wrap>
+            <v-flex xs8>
+                <v-menu
+                    lazy
+                    :close-on-content-click="true"
+                    v-model="menu"
+                    transition="scale-transition"
+                    offset-y
+                    full-width
+                    :nudge-right="40"
+                    max-width="290px"
+                    min-width="290px"
+                >
+                    <v-text-field
+                        slot="activator"
+                        label="Starting Date"
+                        v-model="startDate"
+                        prepend-icon="event"
+                        readonly
+                    ></v-text-field>
+                    <v-date-picker v-model="startDate" no-title scrollable actions>
+                        <template scope="{ save, cancel }">
+                        </template>
+                    </v-date-picker>
+                </v-menu>
+            </v-flex>
+            <v-flex xs4>
+                <v-menu
+                    lazy
+                    :close-on-content-click="true"
+                    v-model="menu"
+                    transition="scale-transition"
+                    offset-y
+                    full-width
+                    :nudge-right="40"
+                    max-width="290px"
+                    min-width="290px"
+                >
+                    <v-text-field
+                        slot="activator"
+                        label="start time"
+                        v-model="startTime"
+                        prepend-icon="event"
+                        readonly
+                    ></v-text-field>
+                    <v-time-picker v-model="startTime" no-title scrollable actions>
+                    </v-time-picker>
+                </v-menu>
+            </v-flex>
+            <v-flex xs8>
+                <v-menu
+                    lazy
+                    :close-on-content-click="false"
+                    v-model="menu"
+                    transition="scale-transition"
+                    offset-y
+                    full-width
+                    :nudge-right="40"
+                    max-width="290px"
+                    min-width="290px"
+                >
+                    <v-text-field
+                        slot="activator"
+                        label="End Date"
+                        v-model="endDate"
+                        prepend-icon="event"
+                        readonly
+                    ></v-text-field>
+                    <v-date-picker v-model="endDate" no-title scrollable actions>
+                        <template scope="{ save, cancel }">
+                            <v-card-actions>
+                                <v-spacer></v-spacer>
+                                <v-btn flat color="primary" @click="$emit('cancelEnd', {})">Cancel</v-btn>
+                                <v-btn flat color="primary" @click="$emit('saveEnd', {})">OK</v-btn>
+                            </v-card-actions>
+                        </template>
+                    </v-date-picker>
+                </v-menu>
+            </v-flex>
+            <v-flex xs4>
+                <v-menu
+                    lazy
+                    :close-on-content-click="false"
+                    v-model="menu"
+                    transition="scale-transition"
+                    offset-y
+                    full-width
+                    :nudge-right="40"
+                    max-width="290px"
+                    min-width="290px"
+                >
+                    <v-text-field
+                        slot="activator"
+                        label="start time"
+                        v-model="endTime"
+                        prepend-icon="event"
+                        readonly
+                    ></v-text-field>
+                    <v-time-picker v-model="endTime" no-title scrollable actions>
+                        <template scope="{ save, cancel }">
+                            <v-card-actions>
+                                <v-spacer></v-spacer>
+                                <v-btn flat color="primary" @click="$emit('cancelEnd', {})">Cancel</v-btn>
+                                <v-btn flat color="primary" @click="$emit('saveEnd', {})">OK</v-btn>
+                            </v-card-actions>
+                        </template>
+                    </v-time-picker>
+                </v-menu>
+            </v-flex>
 
-        <v-menu
-            lazy
-            :close-on-content-click="false"
-            v-model="menu"
-            transition="scale-transition"
-            offset-y
-            full-width
-            :nudge-right="40"
-            max-width="290px"
-            min-width="290px"
-        >
-            <v-text-field
-                slot="activator"
-                label="End Date"
-                v-model="endDate"
-                prepend-icon="event"
-                readonly
-            ></v-text-field>
-            <v-date-picker v-model="endDate" no-title scrollable actions>
-                <template scope="{ save, cancel }">
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn flat color="primary" @click="$emit('cancelEnd', {})">Cancel</v-btn>
-                        <v-btn flat color="primary" @click="$emit('saveEnd', {})">OK</v-btn>
-                    </v-card-actions>
-                </template>
-            </v-date-picker>
-        </v-menu>
 
-        <v-btn
-            block
-            ripple
-            color="primary"
-            @click="$emit('setFilter', {})">
-            {{ i18n.filter }}
-        </v-btn>
-
-    </div>
+            <v-btn
+                block
+                ripple
+                color="primary"
+                @click="$emit('setFilter', {})">
+                {{ i18n.filter }}
+            </v-btn>
+        </v-layout>
+    </v-container>
 </template>
 <script>
     import Bindable from "apprt-vue/mixins/Bindable";
@@ -108,6 +161,14 @@
                 default: null
             },
             endDate:{
+                type: Date,
+                default: null
+            },
+            startTime: {
+                type: Date,
+                default: null
+            },
+            endTime: {
                 type: Date,
                 default: null
             }
