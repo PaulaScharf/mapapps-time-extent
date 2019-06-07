@@ -9,6 +9,11 @@ export default declare({
 
     activate() {
         this.locale = Locale.getCurrent().getLanguage();
+        let props = this._properties;
+        this.startDate = props.defaultStarDate;
+        this.endDate = props.defaultEndDate;
+        this.startTime = props.defaultStartTime;
+        this.endTime = props.defaultEndTime;
         let layers = this.layers = this._getLayers();
         if (layers.length) {
             this.selectedLayerId = layers[0].id;

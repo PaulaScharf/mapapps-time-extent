@@ -43,6 +43,14 @@
         ]
     },
     "bundles": {
+        "dn_timeextent": {
+            "TimeExtentWidgetModel": {
+                "defaultStarDate": "2019-06-09",
+                "defaultEndDate": "2019-08-07",
+                "defaultStartTime": "13:00",
+                "defaultEndTime": "17:00"
+            }
+        },
         "banner": {
             "BannerWidget": {
                 "label": "Developer Network",
