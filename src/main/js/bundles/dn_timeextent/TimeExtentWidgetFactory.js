@@ -30,27 +30,10 @@ export default class TimeExtentWidgetFactory {
     _initComponent(){
         const widget = this.widget = new Vue(TimeExtentWidget);
         let model = this._timeExtentWidgetModel;
-        let that = this;
         widget.i18n = this._i18n.get().ui;
 
         widget.$on('setFilter', () => {
             model.setFilter();
-        });
-
-        widget.$on("cancelStart", () => {
-            model.cancelStart();
-        });
-
-        widget.$on("saveStart", () => {
-            model.saveStart();
-        });
-
-        widget.$on("cancelEnd", () => {
-            model.cancelEnd();
-        });
-
-        widget.$on("saveEnd", () => {
-            model.saveEnd();
         });
 
         Binding.for(widget, model)

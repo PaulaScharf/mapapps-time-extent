@@ -50,22 +50,6 @@ export default declare({
 
     },
 
-    cancelStart(){
-        return this.startDate = null;
-    },
-
-    saveStart(){
-      console.log("saved Start");
-    },
-
-    cancelEnd(){
-        return this.endDate = null;
-    },
-
-    saveEnd(){
-        console.log("saved Start");
-    },
-
     _getLayers() {
         let mapWidgetModel = this._mapWidgetModel;
         let map = mapWidgetModel.map;
