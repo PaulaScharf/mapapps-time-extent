@@ -14,8 +14,10 @@
             <v-flex xs8>
                 <v-menu
                     lazy
-                    :close-on-content-click="true"
-                    v-model="menu"
+                    ref = "menuStartDate"
+                    :close-on-content-click="false"
+                    v-model="menuStartDate"
+                    :return-value.sync= "startDate"
                     transition="scale-transition"
                     offset-y
                     full-width
@@ -32,6 +34,11 @@
                     ></v-text-field>
                     <v-date-picker v-model="startDate" no-title scrollable actions>
                         <template scope="{ save, cancel }">
+                            <v-card-actions>
+                                <v-spacer></v-spacer>
+                                <v-btn flat color="primary" @click="menuStartDate = false">Cancel</v-btn>
+                                <v-btn flat color="primary" @click="$refs.menuStartDate.save(startDate)">OK</v-btn>
+                            </v-card-actions>
                         </template>
                     </v-date-picker>
                 </v-menu>
@@ -39,8 +46,9 @@
             <v-flex xs4>
                 <v-menu
                     lazy
-                    :close-on-content-click="true"
-                    v-model="menu"
+                    :close-on-content-click="false"
+                    ref = "menuStartTime"
+                    v-model="menuStartTime"
                     transition="scale-transition"
                     offset-y
                     full-width
@@ -56,6 +64,13 @@
                         readonly
                     ></v-text-field>
                     <v-time-picker v-model="startTime" no-title scrollable actions>
+                        <template scope="{ save, cancel }">
+                            <v-card-actions>
+                                <v-spacer></v-spacer>
+                                <v-btn flat color="primary" @click="menuStartTime = false">Cancel</v-btn>
+                                <v-btn flat color="primary" @click="$refs.menuStartTime.save(startTime)">OK</v-btn>
+                            </v-card-actions>
+                        </template>
                     </v-time-picker>
                 </v-menu>
             </v-flex>
@@ -63,7 +78,8 @@
                 <v-menu
                     lazy
                     :close-on-content-click="false"
-                    v-model="menu"
+                    ref = "menuEndDate"
+                    v-model="menuEndDate"
                     transition="scale-transition"
                     offset-y
                     full-width
@@ -82,8 +98,8 @@
                         <template scope="{ save, cancel }">
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn flat color="primary" @click="$emit('cancelEnd', {})">Cancel</v-btn>
-                                <v-btn flat color="primary" @click="$emit('saveEnd', {})">OK</v-btn>
+                                <v-btn flat color="primary" @click="menuEndDate = false">Cancel</v-btn>
+                                <v-btn flat color="primary" @click="$refs.menuEndDate.save(endDate)">OK</v-btn>
                             </v-card-actions>
                         </template>
                     </v-date-picker>
@@ -93,7 +109,8 @@
                 <v-menu
                     lazy
                     :close-on-content-click="false"
-                    v-model="menu"
+                    ref = "menuEndTime"
+                    v-model="menuEndTime"
                     transition="scale-transition"
                     offset-y
                     full-width
@@ -103,7 +120,7 @@
                 >
                     <v-text-field
                         slot="activator"
-                        label="start time"
+                        label="end time"
                         v-model="endTime"
                         prepend-icon="event"
                         readonly
@@ -112,8 +129,8 @@
                         <template scope="{ save, cancel }">
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn flat color="primary" @click="$emit('cancelEnd', {})">Cancel</v-btn>
-                                <v-btn flat color="primary" @click="$emit('saveEnd', {})">OK</v-btn>
+                                <v-btn flat color="primary" @click="menuEndTime = false">Cancel</v-btn>
+                                <v-btn flat color="primary" @click="$refs.menuEndTime.save(endTime)">OK</v-btn>
                             </v-card-actions>
                         </template>
                     </v-time-picker>
@@ -171,6 +188,22 @@
             endTime: {
                 type: Date,
                 default: null
+            },
+            menuStartTime: {
+                type: Boolean,
+                default: false
+            },
+            menuEndTime: {
+                type: Boolean,
+                default: false
+            },
+            menuStartDate: {
+                type: Boolean,
+                default: false
+            },
+            menuEndDate: {
+                type: Boolean,
+                default: false
             }
         }
     };

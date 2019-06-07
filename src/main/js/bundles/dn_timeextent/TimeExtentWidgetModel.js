@@ -51,7 +51,7 @@ export default declare({
     },
 
     cancelStart(){
-
+        return this.startDate = null;
     },
 
     saveStart(){
@@ -59,7 +59,7 @@ export default declare({
     },
 
     cancelEnd(){
-
+        return this.endDate = null;
     },
 
     saveEnd(){

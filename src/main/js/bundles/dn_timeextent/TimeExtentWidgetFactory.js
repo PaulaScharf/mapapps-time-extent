@@ -30,6 +30,7 @@ export default class TimeExtentWidgetFactory {
     _initComponent(){
         const widget = this.widget = new Vue(TimeExtentWidget);
         let model = this._timeExtentWidgetModel;
+        let that = this;
         widget.i18n = this._i18n.get().ui;
 
         widget.$on('setFilter', () => {
