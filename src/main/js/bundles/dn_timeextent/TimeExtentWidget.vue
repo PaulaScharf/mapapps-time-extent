@@ -11,7 +11,7 @@
         />
 
         <v-layout row wrap>
-            <v-flex xs8>
+            <v-flex xs7>
                 <v-menu
                     lazy
                     ref = "menuStartDate"
@@ -27,23 +27,23 @@
                 >
                     <v-text-field
                         slot="activator"
-                        label="Starting Date"
+                        :label=i18n.startDateLabel
                         v-model="startDate"
                         prepend-icon="event"
                         readonly
                     ></v-text-field>
-                    <v-date-picker v-model="startDate" no-title scrollable actions>
+                    <v-date-picker v-model="startDate" :locale="locale" no-title scrollable actions>
                         <template scope="{ save, cancel }">
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn flat color="primary" @click="menuStartDate = false">Cancel</v-btn>
-                                <v-btn flat color="primary" @click="$refs.menuStartDate.save(startDate)">OK</v-btn>
+                                <v-btn flat color="primary" @click="menuStartDate = false">{{ i18n.cancel }}</v-btn>
+                                <v-btn flat color="primary" @click="$refs.menuStartDate.save(startDate)">{{ i18n.ok }}</v-btn>
                             </v-card-actions>
                         </template>
                     </v-date-picker>
                 </v-menu>
             </v-flex>
-            <v-flex xs4>
+            <v-flex xs5>
                 <v-menu
                     lazy
                     :close-on-content-click="false"
@@ -58,7 +58,7 @@
                 >
                     <v-text-field
                         slot="activator"
-                        label="start time"
+                        :label=i18n.startTimeLabel
                         v-model="startTime"
                         prepend-icon="event"
                         readonly
@@ -67,14 +67,14 @@
                         <template scope="{ save, cancel }">
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn flat color="primary" @click="menuStartTime = false">Cancel</v-btn>
-                                <v-btn flat color="primary" @click="$refs.menuStartTime.save(startTime)">OK</v-btn>
+                                <v-btn flat color="primary" @click="menuStartTime = false">{{ i18n.cancel }}</v-btn>
+                                <v-btn flat color="primary" @click="$refs.menuStartTime.save(startTime)">{{ i18n.ok }}</v-btn>
                             </v-card-actions>
                         </template>
                     </v-time-picker>
                 </v-menu>
             </v-flex>
-            <v-flex xs8>
+            <v-flex xs7>
                 <v-menu
                     lazy
                     :close-on-content-click="false"
@@ -89,23 +89,23 @@
                 >
                     <v-text-field
                         slot="activator"
-                        label="End Date"
+                        :label=i18n.endDateLabel
                         v-model="endDate"
                         prepend-icon="event"
                         readonly
                     ></v-text-field>
-                    <v-date-picker v-model="endDate" no-title scrollable actions>
+                    <v-date-picker v-model="endDate" :locale="locale" no-title scrollable actions>
                         <template scope="{ save, cancel }">
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn flat color="primary" @click="menuEndDate = false">Cancel</v-btn>
-                                <v-btn flat color="primary" @click="$refs.menuEndDate.save(endDate)">OK</v-btn>
+                                <v-btn flat color="primary" @click="menuEndDate = false">{{ i18n.cancel }}</v-btn>
+                                <v-btn flat color="primary" @click="$refs.menuEndDate.save(endDate)">{{ i18n.ok }}</v-btn>
                             </v-card-actions>
                         </template>
                     </v-date-picker>
                 </v-menu>
             </v-flex>
-            <v-flex xs4>
+            <v-flex xs5>
                 <v-menu
                     lazy
                     :close-on-content-click="false"
@@ -120,7 +120,7 @@
                 >
                     <v-text-field
                         slot="activator"
-                        label="end time"
+                        :label=i18n.endTimeLabel
                         v-model="endTime"
                         prepend-icon="event"
                         readonly
@@ -129,8 +129,8 @@
                         <template scope="{ save, cancel }">
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn flat color="primary" @click="menuEndTime = false">Cancel</v-btn>
-                                <v-btn flat color="primary" @click="$refs.menuEndTime.save(endTime)">OK</v-btn>
+                                <v-btn flat color="primary" @click="menuEndTime = false"> {{ i18n.cancel }}</v-btn>
+                                <v-btn flat color="primary" @click="$refs.menuEndTime.save(endTime)">{{ i18n.ok }}</v-btn>
                             </v-card-actions>
                         </template>
                     </v-time-picker>
@@ -204,6 +204,10 @@
             menuEndDate: {
                 type: Boolean,
                 default: false
+            },
+            locale: {
+                type: String,
+                default: "en"
             }
         }
     };

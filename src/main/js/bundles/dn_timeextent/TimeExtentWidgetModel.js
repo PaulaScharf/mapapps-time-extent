@@ -1,12 +1,14 @@
 import {declare} from "apprt-core/Mutable";
 import TimeExtent from "esri/TimeExtent";
 import FeatureFilter from "esri/views/layers/support/FeatureFilter";
+import Locale from "ct/Locale"
 
 export default declare({
     layers: [],
     selectedLayerId: "",
 
     activate() {
+        this.locale = Locale.getCurrent().getLanguage();
         let layers = this.layers = this._getLayers();
         if (layers.length) {
             this.selectedLayerId = layers[0].id;

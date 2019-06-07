@@ -14,14 +14,20 @@
  * limitations under the License.
  */
 module.exports = {
-    bundleName: "Time Extent",
-    bundleDescription: "Time Extent",
-    windowTitle: "Time Extent",
+    bundleName: "Zeitspannensetzer",
+    bundleDescription: "Zeitspannensetzer",
+    windowTitle: "Zeitspannensetzer",
     tool: {
-        title: "Time Extent",
-        tooltip: "Time Extent"
+        title: "Zeitspannensetzer",
+        tooltip: "Zeitspannensetzer"
     },
     ui: {
-        filter: "set filter"
+        filter: "Filter setzen",
+        startTimeLabel: "Start Zeit",
+        endDateLabel: "End Datum",
+        startDateLabel: "Start Datum",
+        endTimeLabel: "End Zeit",
+        cancel: "Abbrechen",
+        ok: "OK"
     }
 };
