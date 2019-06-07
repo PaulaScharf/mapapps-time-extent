@@ -134,10 +134,10 @@
                 "view": {
                     "viewmode": "2D",
                     "extent": {
-                        "xmin": 600000,
-                        "ymin": 5800000,
-                        "xmax": 1700000,
-                        "ymax": 7600000,
+                        "xmin": -18834083,
+                        "ymin": -1105585,
+                        "xmax": 733795,
+                        "ymax": 10635142,
                         "spatialReference": 3857
                     }
                 }

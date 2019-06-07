@@ -9,6 +9,65 @@
             single-line
             hide-details
         />
+
+        <v-menu
+            lazy
+            :close-on-content-click="false"
+            v-model="menu"
+            transition="scale-transition"
+            offset-y
+            full-width
+            :nudge-right="40"
+            max-width="290px"
+            min-width="290px"
+        >
+            <v-text-field
+                slot="activator"
+                label="Starting Date"
+                v-model="startDate"
+                prepend-icon="event"
+                readonly
+            ></v-text-field>
+            <v-date-picker v-model="startDate" no-title scrollable actions>
+                <template scope="{ save, cancel }">
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn flat color="primary" @click="$emit('cancelStart', {})">Cancel</v-btn>
+                        <v-btn flat color="primary" @click="$emit('saveStart', {})">OK</v-btn>
+                    </v-card-actions>
+                </template>
+            </v-date-picker>
+        </v-menu>
+
+        <v-menu
+            lazy
+            :close-on-content-click="false"
+            v-model="menu"
+            transition="scale-transition"
+            offset-y
+            full-width
+            :nudge-right="40"
+            max-width="290px"
+            min-width="290px"
+        >
+            <v-text-field
+                slot="activator"
+                label="End Date"
+                v-model="endDate"
+                prepend-icon="event"
+                readonly
+            ></v-text-field>
+            <v-date-picker v-model="endDate" no-title scrollable actions>
+                <template scope="{ save, cancel }">
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn flat color="primary" @click="$emit('cancelEnd', {})">Cancel</v-btn>
+                        <v-btn flat color="primary" @click="$emit('saveEnd', {})">OK</v-btn>
+                    </v-card-actions>
+                </template>
+            </v-date-picker>
+        </v-menu>
+
         <v-btn
             block
             ripple
@@ -16,6 +75,7 @@
             @click="$emit('setFilter', {})">
             {{ i18n.filter }}
         </v-btn>
+
     </div>
 </template>
 <script>
@@ -42,6 +102,14 @@
             selectedLayerId: {
                 type: String,
                 default: ""
+            },
+            startDate:{
+                type: Date,
+                default: null
+            },
+            endDate:{
+                type: Date,
+                default: null
             }
         }
     };
